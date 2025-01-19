@@ -1,7 +1,7 @@
 'use client';
 
-import { DashboardLayout } from '../../components/DashboardLayout';
-import { Analytics as AnalyticsComponent } from '../../components/Analytics';
+import DashboardLayout from '@/components/DashboardLayout';
+import { Analytics as AnalyticsComponent } from '@/components/Analytics';
 
 export default function AnalyticsPage() {
   return (

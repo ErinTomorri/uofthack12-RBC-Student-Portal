@@ -1,6 +1,6 @@
 'use client';
 
-import { DashboardLayout } from '../../components/DashboardLayout';
+import DashboardLayout from '@/components/DashboardLayout';
 import { CreditCardIcon, PlusIcon, ShieldCheckIcon, DocumentTextIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 const cards = [
