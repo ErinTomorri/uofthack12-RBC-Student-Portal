@@ -1,38 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
     setLoading(true);
-
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) throw error;
-
-      if (data.user) {
-        router.push('/dashboard');
-      }
-    } catch (error) {
-      setError(error instanceof Error ? error.message : 'An error occurred');
-    } finally {
-      setLoading(false);
-    }
+    
+    // Direct navigation to dashboard
+    window.location.href = '/dashboard';
   };
 
   return (
@@ -56,12 +37,6 @@ export default function LoginPage() {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-[#111927] py-8 px-4 shadow-xl ring-1 ring-gray-800/10 sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSignIn}>
-            {error && (
-              <div className="bg-red-500/10 border border-red-500 text-red-500 rounded-lg p-4 text-sm">
-                {error}
-              </div>
-            )}
-            
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-white">
                 Email address
